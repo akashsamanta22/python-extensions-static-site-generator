@@ -40,6 +40,9 @@ class MarkdownParser(Parser):
         sys.stdout.write(
             "\x1b[1;32m{} converted to HTML. Metadata: {}\n".format(path.name, content)
         )
+        hooks.event("written")
+
+
 class ReStructuredTextParser(Parser):
     file_exts = [".rst"]
     def parse(self, path, source, dest):
@@ -51,3 +54,4 @@ class ReStructuredTextParser(Parser):
         sys.stdout.write(
             "\x1b[1;32m{} converted to HTML. Metadata: {}\n".format(path.name, content)
         )
+        hooks.event("written")
